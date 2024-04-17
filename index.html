@@ -11,25 +11,35 @@
     <meta rel="canonical" href="https://juan.gallegoiv.com" />
     <link rel="icon" href="/images/favicon.ico" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
     <style>
-      body {
-        font-family: Helvetica, Arial, sans-serif;
-        width: 365px;
+      a {
+        color: black;
       }
 
-      footer {
-        margin-top: 20px;
-      }
-
-      footer header {
-        font-weight: bolder;
-      }
-
-      footer ul {
+      ul {
         list-style-type: none;
-        margin: 0;
         padding: 0;
-        margin-top: 10px;
+      }
+
+      #skills ul li {
+        display: inline-block; 
+        margin: 5px;
+        padding: 10px;
+        background-color: #333;
+        color: white;
+      }
+    
+      body {
+        font-family: "Ubuntu", sans-serif;
+        width: 390px;
+      }
+
+      main {
+        padding-left: 20px;
       }
     </style>
   </head>
@@ -41,22 +51,35 @@
     </header>
 
     <main>
-      <p>+15 years of experience as a <strong>Software Developer</strong>. I simplify complexity with technology.</p>
-
-      <aside>
-        <iframe src="https://fedi.gallegoiv.com/@juan/111962088024411490/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script src="https://fedi.gallegoiv.com/embed.js" async="async"></script>
-      </aside>
-    </main>
-
-    <footer>
       <section>
-        <header>Links</header>
-
         <ul>
-          <li><a href="https://notes.gallegoiv.com">Notes</a></li>
-          <li><a href="https://fedi.gallegoiv.com">Dump</a></li>
+          <li><a href="https://github.com/nickel">GitHub profile</a></li>
+          <li><a href="https://fedi.gallegoiv.com">Mastodon profile</a></li>
+          <li><a href="https://notes.gallegoiv.com">Personal notes</a></li>
+          <li><a href="mailto:juan@gallegoiv.com">E-mail</a></li>
         </ul>
       </section>
-    </footer>
+
+      <section>
+        <h2>Summary</h2>
+
+        <section>
+          <p>
+            +15 years of experience as a <strong>Software Developer</strong>.
+            I simplify complexity with technology.
+          </p>
+        </section>
+      </section>
+
+      <section id="skills">
+        <h2>Skills</h2>
+
+        <ul>
+          <li>Ruby on Rails</li>
+          <li>Docker</li>
+          <li>CI/CD</li>
+        </ul>
+      </section>
+    </main>
   </body>
 </html>
