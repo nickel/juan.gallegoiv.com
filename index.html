@@ -38,7 +38,7 @@
 
       main {
         padding-left: 20px;
-        max-width: 370px;
+        max-width: 400px;
       }
 
       .banner {
@@ -47,6 +47,13 @@
         height: 5px;
       }
 
+      #notes h2 a {
+        color: black;
+      }
+
+      #notes ul li {
+        padding-left: 20px;
+      }
     </style>
   </head>
   <body>
@@ -88,6 +95,54 @@
           <li>CI/CD</li>
         </ul>
       </section>
+
+      <section id="notes">
+        <h2>Last <a href="https://notes.gallegoiv.com">notes</a></h2>
+
+        <div id="feed-notes"></div>
+      </section>
     </main>
   </body>
+
+  <script type="application/javascript">
+    fetch('https://notes.gallegoiv.com/notes.atom')
+      .then(response => response.text())
+      .then(data => {
+        parseAtomFeed(data);
+      })
+      .catch(error => console.error('Error fetching the Atom feed:', error));
+
+    function parseAtomFeed(xmlData) {
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(xmlData, "application/xml");
+
+      // Check for parsing errors
+      if (xmlDoc.querySelector("parsererror")) {
+        console.error('Error parsing XML');
+        return;
+      }
+
+      displayFeed(xmlDoc);
+    }
+
+    function displayFeed(xmlDoc) {
+      const entries = xmlDoc.querySelectorAll("entry");
+      const feedContainer = document.getElementById("feed-notes");
+
+      Array.from(entries).slice(0, 5).forEach(entry => {
+        const title = entry.querySelector("title").textContent;
+        const link = entry.querySelector("link").getAttribute("href");
+        const publishedAt = entry.querySelector("published").textContent;
+
+        const entryElement = document.createElement("ul");
+        entryElement.innerHTML = `
+          <li>
+            <a href="${link}">${title}</a>
+            - ${(new Date(publishedAt)).toLocaleDateString()}
+          </li>
+        `;
+        feedContainer.appendChild(entryElement);
+      });
+    }
+  </script>
 </html>
