@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM nginx:1.25.3-alpine
+FROM nginx:1.27.5-alpine
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
